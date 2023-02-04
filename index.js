@@ -1,5 +1,5 @@
 //needed packages - already accomplished with package.json (?)
-import { createClient } from './node_modules/pexels/dist';
+import { createClient } from './node_modules/pexels/dist/main.js';
 //declare constants 
 const API_KEY = process.env.API_KEY;
 const CLIENT = createClient(API_KEY);
