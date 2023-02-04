@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "pexels": "^1.4.0"
   }
