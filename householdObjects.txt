@@ -19,5 +19,4 @@ curtain
 t-shirt
 dryer
 vcr
-antique
 mop
