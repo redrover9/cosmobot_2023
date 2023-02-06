@@ -100,3 +100,7 @@ func getFont() string {
 	font := fonts[rand.Intn(max-min)+min]
 	return font
 }
+
+func main() {
+
+}
