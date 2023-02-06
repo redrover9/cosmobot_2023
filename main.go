@@ -16,9 +16,11 @@ func getPhotoURL() string {
 	cli := pexels.NewClient(os.Getenv("PEXELS_API_KEY"))
 	ctx := context.Background()
 	ps, err := cli.PhotoService.Search(ctx, &pexels.PhotoParams{
-		Query:   "men",
-		Page:    1,
-		PerPage: 80,
+		Query:       "handsome man",
+		Orientation: "landscape",
+		Page:        1,
+		PerPage:     80,
+		Size:        "large",
 	})
 	if err != nil {
 		log.Fatal(err)
