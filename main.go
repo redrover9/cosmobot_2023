@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"context"
+	"fmt"
 	"io"
 	"log"
 	"math/rand"
@@ -52,7 +53,7 @@ func getCaption() string {
 	part := partLines[rand.Intn(partMax-min)+min]
 	object := objectLines[rand.Intn(objectMax-min)+min]
 
-	caption := verb + " his " + part + " with a " + object
+	caption := verb + " his " + part + " with a " + object + "!"
 	return caption
 
 }
@@ -77,7 +78,7 @@ func getPhotoURL() string {
 	return sourceURL
 }
 
-func getPhoto() int64 {
+func getPhoto() {
 	resp, err := http.Get(getPhotoURL())
 	if err != nil {
 		log.Fatal(err)
@@ -90,21 +91,23 @@ func getPhoto() int64 {
 	}
 	defer out.Close()
 
-	photo, _ := io.Copy(out, resp.Body)
-	return photo
+	_, err = io.Copy(out, resp.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func getFont() string {
 	fonts := []string{"Cedarville_Cursive/CedarvilleCursive-Regular.ttf", "Crafty_Girls/CraftyGirls-Regular.ttf", "Dancing_Script/DancingScript-VariableFont_wght.ttf", "Delius_Swash_Caps/DeliusSwashCaps-Regular.ttf", "Indie_Flower/IndieFlower-Regular.ttf", "Sassy_Frass/SassyFrass-Regular.ttf"}
 	rand.Seed(time.Now().UnixNano())
 	min := 1
-	max := 4
+	max := 6
 	font := fonts[rand.Intn(max-min)+min]
 	return font
 }
 
 func main() {
-	getCaption()
+	fmt.Println(getCaption())
 	getPhoto()
-	getFont()
+	fmt.Println(getFont())
 }
